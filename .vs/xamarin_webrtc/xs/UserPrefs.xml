@@ -1,0 +1,27 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="xamarin_webrtc/ApiDefinition.cs">
+    <Files>
+      <File FileName="xamarin_webrtc/Structs.cs" Line="10" Column="30" />
+      <File FileName="xamarin_webrtc/ApiDefinition.cs" Line="32" Column="19" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="xamarin_webrtc" expanded="True">
+            <Node name="xamarin_webrtc" expanded="True">
+              <Node name="NativeReferenceFolder" expanded="True" />
+              <Node name="ApiDefinition.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.xamarin__webrtc FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

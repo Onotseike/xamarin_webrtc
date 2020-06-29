@@ -57,7 +57,7 @@ namespace WebRTC
 
         // -(RTCVideoFrame * _Nonnull)newI420VideoFrame;
         [Export("newI420VideoFrame")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoFrame NewI420VideoFrame { get; }
     }
 
@@ -140,13 +140,13 @@ namespace WebRTC
         // @required -(id<RTCI420Buffer> _Nonnull)toI420;
         [Abstract]
         [Export("toI420")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         RTCI420Buffer ToI420 { get; }
     }
 
     // @protocol RTCYUVPlanarBuffer <RTCVideoFrameBuffer>
     [Protocol, Model]
-    interface RTCYUVPlanarBuffer : IRTCVideoFrameBuffer
+    interface IRTCYUVPlanarBuffer : RTCVideoFrameBuffer
     {
         // @required @property (readonly, nonatomic) int chromaWidth;
         [Abstract]
@@ -206,13 +206,13 @@ namespace WebRTC
 
     // @protocol RTCI420Buffer <RTCYUVPlanarBuffer>
     [Protocol, Model]
-    interface RTCI420Buffer : IRTCYUVPlanarBuffer
+    interface IRTCI420Buffer : IRTCYUVPlanarBuffer
     {
     }
 
     // @protocol RTCMutableYUVPlanarBuffer <RTCYUVPlanarBuffer>
     [Protocol, Model]
-    interface RTCMutableYUVPlanarBuffer : IRTCYUVPlanarBuffer
+    interface IRTCMutableYUVPlanarBuffer : IRTCYUVPlanarBuffer
     {
         // @required @property (readonly, nonatomic) uint8_t * _Nonnull mutableDataY;
         [Abstract]
@@ -232,7 +232,7 @@ namespace WebRTC
 
     // @protocol RTCMutableI420Buffer <RTCI420Buffer, RTCMutableYUVPlanarBuffer>
     [Protocol, Model]
-    interface RTCMutableI420Buffer : IRTCI420Buffer, IRTCMutableYUVPlanarBuffer
+    interface IRTCMutableI420Buffer : IRTCI420Buffer, IRTCMutableYUVPlanarBuffer
     {
     }
 
@@ -374,7 +374,7 @@ namespace WebRTC
         // @required -(NSInteger)releaseDecoder;
         [Abstract]
         [Export("releaseDecoder")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         nint ReleaseDecoder { get; }
 
         // @required -(NSInteger)decode:(RTCEncodedImage * _Nonnull)encodedImage missingFrames:(BOOL)missingFrames codecSpecificInfo:(id<RTCCodecSpecificInfo> _Nullable)info renderTimeMs:(int64_t)renderTimeMs;
@@ -385,7 +385,7 @@ namespace WebRTC
         // @required -(NSString * _Nonnull)implementationName;
         [Abstract]
         [Export("implementationName")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         string ImplementationName { get; }
     }
 
@@ -403,7 +403,7 @@ namespace WebRTC
         // @required -(NSArray<RTCVideoCodecInfo *> * _Nonnull)supportedCodecs;
         [Abstract]
         [Export("supportedCodecs")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoCodecInfo[] SupportedCodecs { get; }
     }
 
@@ -445,7 +445,7 @@ namespace WebRTC
         // @required -(NSInteger)releaseEncoder;
         [Abstract]
         [Export("releaseEncoder")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         nint ReleaseEncoder { get; }
 
         // @required -(NSInteger)encode:(RTCVideoFrame * _Nonnull)frame codecSpecificInfo:(id<RTCCodecSpecificInfo> _Nullable)info frameTypes:(NSArray<NSNumber *> * _Nonnull)frameTypes;
@@ -461,13 +461,13 @@ namespace WebRTC
         // @required -(NSString * _Nonnull)implementationName;
         [Abstract]
         [Export("implementationName")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         string ImplementationName { get; }
 
         // @required -(RTCVideoEncoderQpThresholds * _Nullable)scalingSettings;
         [Abstract]
         [NullAllowed, Export("scalingSettings")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoEncoderQpThresholds ScalingSettings { get; }
     }
 
@@ -485,12 +485,12 @@ namespace WebRTC
         // @required -(NSArray<RTCVideoCodecInfo *> * _Nonnull)supportedCodecs;
         [Abstract]
         [Export("supportedCodecs")]
-        [Verify(MethodToProperty)]
+        //[Verify(MethodToProperty)]
         RTCVideoCodecInfo[] SupportedCodecs { get; }
 
         // @optional -(NSArray<RTCVideoCodecInfo *> * _Nonnull)implementations;
         [Export("implementations")]
-        [Verify(MethodToProperty)]
+        //[Verify(MethodToProperty)]
         RTCVideoCodecInfo[] Implementations { get; }
     }
 
@@ -521,8 +521,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+   // //[Verify(ConstantsInterfaceAssociation)]
+    partial interface AudioSession
     {
         // extern NSString *const _Nonnull kRTCAudioSessionErrorDomain;
         [Field("kRTCAudioSessionErrorDomain", "__Internal")]
@@ -584,11 +584,11 @@ namespace WebRTC
 
         // @optional -(void)audioSession:(RTCAudioSession * _Nonnull)audioSession willSetActive:(BOOL)active;
         [Export("audioSession:willSetActive:")]
-        void AudioSession(RTCAudioSession audioSession, bool active);
+        void AudioSession_WillSetActive(RTCAudioSession audioSession, bool active);
 
         // @optional -(void)audioSession:(RTCAudioSession * _Nonnull)audioSession didSetActive:(BOOL)active;
         [Export("audioSession:didSetActive:")]
-        void AudioSession(RTCAudioSession audioSession, bool active);
+        void AudioSession_DidSetActive(RTCAudioSession audioSession, bool active);
 
         // @optional -(void)audioSession:(RTCAudioSession * _Nonnull)audioSession failedToSetActive:(BOOL)active error:(NSError * _Nonnull)error;
         [Export("audioSession:failedToSetActive:error:")]
@@ -614,7 +614,7 @@ namespace WebRTC
     // @interface RTCAudioSession : NSObject <RTCAudioSessionActivationDelegate>
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface RTCAudioSession : IRTCAudioSessionActivationDelegate
+    partial interface RTCAudioSession : RTCAudioSessionActivationDelegate
     {
         // @property (readonly, nonatomic) AVAudioSession * _Nonnull session;
         [Export("session")]
@@ -817,8 +817,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+   // //[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCAudioSessionConfiguration
     {
         // extern const int kRTCAudioSessionPreferredNumberOfChannels __attribute__((visibility("default")));
         [Field("kRTCAudioSessionPreferredNumberOfChannels", "__Internal")]
@@ -843,7 +843,7 @@ namespace WebRTC
 
     // @interface RTCAudioSessionConfiguration : NSObject
     [BaseType(typeof(NSObject))]
-    interface RTCAudioSessionConfiguration
+    partial interface RTCAudioSessionConfiguration
     {
         // @property (nonatomic, strong) NSString * _Nonnull category;
         [Export("category", ArgumentSemantic.Strong)]
@@ -890,7 +890,8 @@ namespace WebRTC
     }
 
     // @interface RTCCameraVideoCapturer : RTCVideoCapturer
-    [Unavailable(PlatformName.iOSAppExtension)]
+    //[Unavailable(PlatformName.iOSAppExtension)]
+    [Unavailable(PlatformName.iOS)]
     [BaseType(typeof(RTCVideoCapturer))]
     interface RTCCameraVideoCapturer
     {
@@ -901,7 +902,7 @@ namespace WebRTC
         // +(NSArray<AVCaptureDevice *> * _Nonnull)captureDevices;
         [Static]
         [Export("captureDevices")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         AVCaptureDevice[] CaptureDevices { get; }
 
         // +(NSArray<AVCaptureDeviceFormat *> * _Nonnull)supportedFormatsForDevice:(AVCaptureDevice * _Nonnull)device;
@@ -911,7 +912,7 @@ namespace WebRTC
 
         // -(FourCharCode)preferredOutputPixelFormat;
         [Export("preferredOutputPixelFormat")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         uint PreferredOutputPixelFormat { get; }
 
         // -(void)startCaptureWithDevice:(AVCaptureDevice * _Nonnull)device format:(AVCaptureDeviceFormat * _Nonnull)format fps:(NSInteger)fps completionHandler:(void (^ _Nullable)(NSError * _Nonnull))completionHandler;
@@ -951,7 +952,7 @@ namespace WebRTC
     // @interface RTCMTLVideoView : UIView <RTCVideoRenderer>
     [iOS(9, 0)]
     [BaseType(typeof(UIView))]
-    interface RTCMTLVideoView : IRTCVideoRenderer
+    interface RTCMTLVideoView : RTCVideoRenderer
     {
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -993,7 +994,7 @@ namespace WebRTC
     // @interface RTCEAGLVideoView : UIView <RTCVideoRenderer>
     [Unavailable(PlatformName.iOSAppExtension)]
     [BaseType(typeof(UIView))]
-    interface RTCEAGLVideoView : IRTCVideoRenderer
+    interface RTCEAGLVideoView : RTCVideoRenderer
     {
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -1016,7 +1017,7 @@ namespace WebRTC
 
     // @interface RTCCodecSpecificInfoH264 : NSObject <RTCCodecSpecificInfo>
     [BaseType(typeof(NSObject))]
-    interface RTCCodecSpecificInfoH264 : IRTCCodecSpecificInfo
+    interface RTCCodecSpecificInfoH264 : RTCCodecSpecificInfo
     {
         // @property (assign, nonatomic) RTCH264PacketizationMode packetizationMode;
         [Export("packetizationMode", ArgumentSemantic.Assign)]
@@ -1025,13 +1026,13 @@ namespace WebRTC
 
     // @interface RTCDefaultVideoDecoderFactory : NSObject <RTCVideoDecoderFactory>
     [BaseType(typeof(NSObject))]
-    interface RTCDefaultVideoDecoderFactory : IRTCVideoDecoderFactory
+    interface RTCDefaultVideoDecoderFactory : RTCVideoDecoderFactory
     {
     }
 
     // @interface RTCDefaultVideoEncoderFactory : NSObject <RTCVideoEncoderFactory>
     [BaseType(typeof(NSObject))]
-    interface RTCDefaultVideoEncoderFactory : IRTCVideoEncoderFactory
+    interface RTCDefaultVideoEncoderFactory : RTCVideoEncoderFactory
     {
         // @property (retain, nonatomic) RTCVideoCodecInfo * _Nonnull preferredCodec;
         [Export("preferredCodec", ArgumentSemantic.Retain)]
@@ -1040,13 +1041,13 @@ namespace WebRTC
         // +(NSArray<RTCVideoCodecInfo *> * _Nonnull)supportedCodecs;
         [Static]
         [Export("supportedCodecs")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         RTCVideoCodecInfo[] SupportedCodecs { get; }
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCH264ProfileLevelId
     {
         // extern NSString *const kRTCVideoCodecH264Name __attribute__((visibility("default")));
         [Field("kRTCVideoCodecH264Name", "__Internal")]
@@ -1071,7 +1072,7 @@ namespace WebRTC
 
     // @interface RTCH264ProfileLevelId : NSObject
     [BaseType(typeof(NSObject))]
-    interface RTCH264ProfileLevelId
+    partial interface RTCH264ProfileLevelId
     {
         // @property (readonly, nonatomic) RTCH264Profile profile;
         [Export("profile")]
@@ -1096,25 +1097,25 @@ namespace WebRTC
 
     // @interface RTCVideoDecoderFactoryH264 : NSObject <RTCVideoDecoderFactory>
     [BaseType(typeof(NSObject))]
-    interface RTCVideoDecoderFactoryH264 : IRTCVideoDecoderFactory
+    interface RTCVideoDecoderFactoryH264 : RTCVideoDecoderFactory
     {
     }
 
     // @interface RTCVideoDecoderH264 : NSObject <RTCVideoDecoder>
     [BaseType(typeof(NSObject))]
-    interface RTCVideoDecoderH264 : IRTCVideoDecoder
+    interface RTCVideoDecoderH264 : RTCVideoDecoder
     {
     }
 
     // @interface RTCVideoEncoderFactoryH264 : NSObject <RTCVideoEncoderFactory>
     [BaseType(typeof(NSObject))]
-    interface RTCVideoEncoderFactoryH264 : IRTCVideoEncoderFactory
+    interface RTCVideoEncoderFactoryH264 : RTCVideoEncoderFactory
     {
     }
 
     // @interface RTCVideoEncoderH264 : NSObject <RTCVideoEncoder>
     [BaseType(typeof(NSObject))]
-    interface RTCVideoEncoderH264 : IRTCVideoEncoder
+    interface RTCVideoEncoderH264 : RTCVideoEncoder
     {
         // -(instancetype)initWithCodecInfo:(RTCVideoCodecInfo *)codecInfo;
         [Export("initWithCodecInfo:")]
@@ -1123,7 +1124,7 @@ namespace WebRTC
 
     // @interface RTCCVPixelBuffer : NSObject <RTCVideoFrameBuffer>
     [BaseType(typeof(NSObject))]
-    interface RTCCVPixelBuffer : IRTCVideoFrameBuffer
+    interface RTCCVPixelBuffer : RTCVideoFrameBuffer
     {
         // @property (readonly, nonatomic) CVPixelBufferRef _Nonnull pixelBuffer;
         [Export("pixelBuffer")]
@@ -1148,7 +1149,7 @@ namespace WebRTC
         // +(NSSet<NSNumber *> * _Nonnull)supportedPixelFormats;
         [Static]
         [Export("supportedPixelFormats")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         NSSet<NSNumber> SupportedPixelFormats { get; }
 
         // -(instancetype _Nonnull)initWithPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer;
@@ -1161,7 +1162,7 @@ namespace WebRTC
 
         // -(BOOL)requiresCropping;
         [Export("requiresCropping")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         bool RequiresCropping { get; }
 
         // -(BOOL)requiresScalingToWidth:(int)width height:(int)height;
@@ -1210,13 +1211,13 @@ namespace WebRTC
         // +(RTCDeviceType)deviceType;
         [Static]
         [Export("deviceType")]
-        [Verify(MethodToProperty)]
+        //[Verify(MethodToProperty)]
         RTCDeviceType DeviceType { get; }
 
         // +(BOOL)isIOS11OrLater;
         [Static]
         [Export("isIOS11OrLater")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         bool IsIOS11OrLater { get; }
     }
 
@@ -1241,8 +1242,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCMediaStreamTrack
     {
         // extern NSString *const _Nonnull kRTCMediaStreamTrackKindAudio __attribute__((visibility("default")));
         [Field("kRTCMediaStreamTrackKindAudio", "__Internal")]
@@ -1256,7 +1257,7 @@ namespace WebRTC
     // @interface RTCMediaStreamTrack : NSObject
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface RTCMediaStreamTrack
+    partial interface RTCMediaStreamTrack
     {
         // @property (readonly, nonatomic) NSString * _Nonnull kind;
         [Export("kind")]
@@ -1608,8 +1609,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCFieldTrials
     {
         // extern NSString *const kRTCFieldTrialAudioSendSideBweKey __attribute__((visibility("default")));
         [Field("kRTCFieldTrialAudioSendSideBweKey", "__Internal")]
@@ -1775,8 +1776,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCMediaConstraints
     {
         // extern NSString *const _Nonnull kRTCMediaConstraintsAudioNetworkAdaptorConfig __attribute__((visibility("default")));
         [Field("kRTCMediaConstraintsAudioNetworkAdaptorConfig", "__Internal")]
@@ -1810,7 +1811,7 @@ namespace WebRTC
     // @interface RTCMediaConstraints : NSObject
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface RTCMediaConstraints
+    partial interface RTCMediaConstraints
     {
         // -(instancetype _Nonnull)initWithMandatoryConstraints:(NSDictionary<NSString *,NSString *> * _Nullable)mandatory optionalConstraints:(NSDictionary<NSString *,NSString *> * _Nullable)optional __attribute__((objc_designated_initializer));
         [Export("initWithMandatoryConstraints:optionalConstraints:")]
@@ -1879,8 +1880,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCPeerConnection
     {
         // extern NSString *const _Nonnull kRTCPeerConnectionErrorDomain;
         [Field("kRTCPeerConnectionErrorDomain", "__Internal")]
@@ -1904,12 +1905,12 @@ namespace WebRTC
         // @required -(void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didAddStream:(RTCMediaStream * _Nonnull)stream;
         [Abstract]
         [Export("peerConnection:didAddStream:")]
-        void PeerConnection(RTCPeerConnection peerConnection, RTCMediaStream stream);
+        void PeerConnection_AddStream(RTCPeerConnection peerConnection, RTCMediaStream stream);
 
         // @required -(void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didRemoveStream:(RTCMediaStream * _Nonnull)stream;
         [Abstract]
         [Export("peerConnection:didRemoveStream:")]
-        void PeerConnection(RTCPeerConnection peerConnection, RTCMediaStream stream);
+        void PeerConnection_RemoveStream(RTCPeerConnection peerConnection, RTCMediaStream stream);
 
         // @required -(void)peerConnectionShouldNegotiate:(RTCPeerConnection * _Nonnull)peerConnection;
         [Abstract]
@@ -1943,7 +1944,7 @@ namespace WebRTC
 
         // @optional -(void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeStandardizedIceConnectionState:(RTCIceConnectionState)newState;
         [Export("peerConnection:didChangeStandardizedIceConnectionState:")]
-        void PeerConnection(RTCPeerConnection peerConnection, RTCIceConnectionState newState);
+        void PeerConnection_Standardized(RTCPeerConnection peerConnection, RTCIceConnectionState newState);
 
         // @optional -(void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeConnectionState:(RTCPeerConnectionState)newState;
         [Export("peerConnection:didChangeConnectionState:")]
@@ -1969,7 +1970,7 @@ namespace WebRTC
     // @interface RTCPeerConnection : NSObject
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface RTCPeerConnection
+    partial interface RTCPeerConnection
     {
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -2168,7 +2169,7 @@ namespace WebRTC
 
         // -(RTCVideoSource * _Nonnull)videoSource;
         [Export("videoSource")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoSource VideoSource { get; }
 
         // -(RTCVideoTrack * _Nonnull)videoTrackWithSource:(RTCVideoSource * _Nonnull)source trackId:(NSString * _Nonnull)trackId;
@@ -2243,8 +2244,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCRtpCodecParameters
     {
         // extern const NSString *const _Nonnull kRTCRtxCodecName __attribute__((visibility("default")));
         [Field("kRTCRtxCodecName", "__Internal")]
@@ -2313,7 +2314,7 @@ namespace WebRTC
 
     // @interface RTCRtpCodecParameters : NSObject
     [BaseType(typeof(NSObject))]
-    interface RTCRtpCodecParameters
+    partial interface RTCRtpCodecParameters
     {
         // @property (assign, nonatomic) int payloadType;
         [Export("payloadType")]
@@ -2437,7 +2438,7 @@ namespace WebRTC
     // @protocol RTCRtpReceiver <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface RTCRtpReceiver
+    interface IRTCRtpReceiver
     {
         // @required @property (readonly, nonatomic) NSString * _Nonnull receiverId;
         [Abstract]
@@ -2484,31 +2485,31 @@ namespace WebRTC
         // @required -(BOOL)insertDtmf:(NSString * _Nonnull)tones duration:(NSTimeInterval)duration interToneGap:(NSTimeInterval)interToneGap;
         [Abstract]
         [Export("insertDtmf:duration:interToneGap:")]
-        bool Duration(string tones, double duration, double interToneGap);
+        bool InsertDtmf(string tones, double duration, double interToneGap);
 
         // @required -(NSString * _Nonnull)remainingTones;
         [Abstract]
         [Export("remainingTones")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         string RemainingTones { get; }
 
         // @required -(NSTimeInterval)duration;
         [Abstract]
         [Export("duration")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         double Duration { get; }
 
         // @required -(NSTimeInterval)interToneGap;
         [Abstract]
         [Export("interToneGap")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         double InterToneGap { get; }
     }
 
     // @protocol RTCRtpSender <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface RTCRtpSender
+    interface IRTCRtpSender
     {
         // @required @property (readonly, nonatomic) NSString * _Nonnull senderId;
         [Abstract]
@@ -2558,7 +2559,7 @@ namespace WebRTC
     // @protocol RTCRtpTransceiver <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface RTCRtpTransceiver
+    interface IRTCRtpTransceiver
     {
         // @required @property (readonly, nonatomic) RTCRtpMediaType mediaType;
         [Abstract]
@@ -2640,7 +2641,7 @@ namespace WebRTC
     // @interface RTCVideoSource : RTCMediaSource <RTCVideoCapturerDelegate>
     [BaseType(typeof(RTCMediaSource))]
     [DisableDefaultCtor]
-    interface RTCVideoSource : IRTCVideoCapturerDelegate
+    interface RTCVideoSource : RTCVideoCapturerDelegate
     {
         // -(void)adaptOutputFormatToWidth:(int)width height:(int)height fps:(int)fps;
         [Export("adaptOutputFormatToWidth:height:fps:")]
@@ -2666,8 +2667,8 @@ namespace WebRTC
     }
 
     [Static]
-    [Verify(ConstantsInterfaceAssociation)]
-    partial interface Constants
+    ////[Verify(ConstantsInterfaceAssociation)]
+    partial interface RTCVideoCodecConstants
     {
         // extern NSString *const kRTCVideoCodecVp8Name __attribute__((visibility("default")));
         [Field("kRTCVideoCodecVp8Name", "__Internal")]
@@ -2685,7 +2686,7 @@ namespace WebRTC
         // +(id<RTCVideoDecoder>)vp8Decoder;
         [Static]
         [Export("vp8Decoder")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         RTCVideoDecoder Vp8Decoder { get; }
     }
 
@@ -2696,7 +2697,7 @@ namespace WebRTC
         // +(id<RTCVideoDecoder>)vp9Decoder;
         [Static]
         [Export("vp9Decoder")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoDecoder Vp9Decoder { get; }
     }
 
@@ -2707,7 +2708,7 @@ namespace WebRTC
         // +(id<RTCVideoEncoder>)vp8Encoder;
         [Static]
         [Export("vp8Encoder")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoEncoder Vp8Encoder { get; }
     }
 
@@ -2718,7 +2719,7 @@ namespace WebRTC
         // +(id<RTCVideoEncoder>)vp9Encoder;
         [Static]
         [Export("vp9Encoder")]
-        [Verify(MethodToProperty)]
+        ////[Verify(MethodToProperty)]
         RTCVideoEncoder Vp9Encoder { get; }
     }
 
@@ -2796,7 +2797,7 @@ namespace WebRTC
 
         // -(NSData * _Nullable)logData;
         [NullAllowed, Export("logData")]
-        [Verify(MethodToProperty)]
+       // //[Verify(MethodToProperty)]
         NSData LogData { get; }
     }
 

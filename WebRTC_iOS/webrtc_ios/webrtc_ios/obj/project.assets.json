@@ -1,0 +1,49 @@
+{
+  "version": 3,
+  "targets": {
+    "Xamarin.iOS,Version=v1.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "Xamarin.iOS,Version=v1.0": []
+  },
+  "packageFolders": {
+    "C:\\Users\\onots\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_iOS\\webrtc_ios\\webrtc_ios\\webrtc_ios.csproj",
+      "projectName": "webrtc_ios",
+      "projectPath": "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_iOS\\webrtc_ios\\webrtc_ios\\webrtc_ios.csproj",
+      "packagesPath": "C:\\Users\\onots\\.nuget\\packages\\",
+      "outputPath": "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_iOS\\webrtc_ios\\webrtc_ios\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\onots\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "xamarinios10"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "xamarinios10": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "xamarinios10": {}
+    }
+  }
+}

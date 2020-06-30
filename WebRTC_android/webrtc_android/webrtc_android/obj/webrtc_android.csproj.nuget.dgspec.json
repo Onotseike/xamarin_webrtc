@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_android\\webrtc_android\\webrtc_android\\webrtc_android.csproj": {}
+  },
+  "projects": {
+    "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_android\\webrtc_android\\webrtc_android\\webrtc_android.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_android\\webrtc_android\\webrtc_android\\webrtc_android.csproj",
+        "projectName": "webrtc_android",
+        "projectPath": "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_android\\webrtc_android\\webrtc_android\\webrtc_android.csproj",
+        "packagesPath": "C:\\Users\\onots\\.nuget\\packages\\",
+        "outputPath": "D:\\onots\\source\\repos\\xamarin_webrtc\\WebRTC_android\\webrtc_android\\webrtc_android\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\onots\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "monoandroid90"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "monoandroid90": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "monoandroid90": {}
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

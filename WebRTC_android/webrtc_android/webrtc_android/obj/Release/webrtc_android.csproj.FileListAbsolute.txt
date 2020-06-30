@@ -1,0 +1,6 @@
+D:\onots\source\repos\xamarin_webrtc\WebRTC_android\webrtc_android\webrtc_android\bin\Release\webrtc_android.dll
+D:\onots\source\repos\xamarin_webrtc\WebRTC_android\webrtc_android\webrtc_android\bin\Release\webrtc_android.pdb
+D:\onots\source\repos\xamarin_webrtc\WebRTC_android\webrtc_android\webrtc_android\obj\Release\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+D:\onots\source\repos\xamarin_webrtc\WebRTC_android\webrtc_android\webrtc_android\obj\Release\webrtc_android.csproj.CoreCompileInputs.cache
+D:\onots\source\repos\xamarin_webrtc\WebRTC_android\webrtc_android\webrtc_android\obj\Release\webrtc_android.dll
+D:\onots\source\repos\xamarin_webrtc\WebRTC_android\webrtc_android\webrtc_android\obj\Release\webrtc_android.pdb

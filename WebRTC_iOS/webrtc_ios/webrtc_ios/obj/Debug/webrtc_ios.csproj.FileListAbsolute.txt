@@ -1,0 +1,5 @@
+D:\onots\source\repos\xamarin_webrtc\WebRTC_iOS\webrtc_ios\webrtc_ios\bin\Debug\WebRTC.iOS.Binding.dll
+D:\onots\source\repos\xamarin_webrtc\WebRTC_iOS\webrtc_ios\webrtc_ios\bin\Debug\WebRTC.iOS.Binding.pdb
+D:\onots\source\repos\xamarin_webrtc\WebRTC_iOS\webrtc_ios\webrtc_ios\obj\Debug\webrtc_ios.csproj.CoreCompileInputs.cache
+D:\onots\source\repos\xamarin_webrtc\WebRTC_iOS\webrtc_ios\webrtc_ios\obj\Debug\WebRTC.iOS.Binding.dll
+D:\onots\source\repos\xamarin_webrtc\WebRTC_iOS\webrtc_ios\webrtc_ios\obj\Debug\WebRTC.iOS.Binding.pdb
